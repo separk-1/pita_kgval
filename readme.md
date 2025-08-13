@@ -1,16 +1,16 @@
 # PITA Knowledge Graph Validation UI – Usage Guide
 
-This repository is for.. 
+This repository contains the **PITA Knowledge Graph Validation UI** for internal testing of relationship validation between CNSC and USNRC regulatory documents.
 
-- UI link: 
-- ß`bi-driectional_relationships_input.csv` – Input data for validation
+- **UI link:** [https://pita-kgval.vercel.app/](https://pita-kgval.vercel.app/)
+- `bi-driectional_relationships_input.csv` – Input data for validation
 
 ---
 
 ## 📋 Instructions
 
 ### 1. Open the Link
-- 
+- Go to [https://pita-kgval.vercel.app/](https://pita-kgval.vercel.app/)
 
 ### 2. Enter Your Name Initials
 - When prompted, enter your initials or identifier (e.g., `Spark` for Seongeun Park).
