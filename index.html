@@ -897,6 +897,19 @@
             return rel;
         }
 
+        // Function to get the correct flag emoji based on regulation name
+        function getFlag(regulation) {
+            switch (regulation.toUpperCase()) {
+                case 'CNSC':
+                    return '🇨🇦';
+                case 'USNRC':
+                    return '🇺🇸';
+                default:
+                    return '🌐'; // Default flag for unknown regulations
+            }
+
+        }
+
         // Show navigation bar
         function showNavigationBar() {
             document.getElementById('navigationBar').style.display = 'flex';
@@ -978,7 +991,7 @@
                 
                 <div class="comparison-container">
                     <div class="node-panel">
-                        <h3>🇨🇦 ${rel.nodeA.regulation || 'CNSC'}</h3>
+                        <h3>${getFlag(rel.nodeA.regulation)} ${rel.nodeA.regulation || 'CNSC'}</h3>
                         <div class="node-description">
                             ${createExpandableDescription(rel.nodeA.description || 'No description available', index, 'a')}
                         </div>
@@ -996,7 +1009,7 @@
                     </div>
                     
                     <div class="node-panel">
-                        <h3>🇺🇸 ${rel.nodeB.regulation || 'USNRC'}</h3>
+                        <h3>${getFlag(rel.nodeB.regulation)} ${rel.nodeB.regulation || 'USNRC'}</h3>
                         <div class="node-description">
                             ${createExpandableDescription(rel.nodeB.description || 'No description available', index, 'b')}
                         </div>
@@ -1009,7 +1022,6 @@
                             <h4>🔄 R1 Relationship (${rel.nodeA.regulation || 'A'} → ${rel.nodeB.regulation || 'B'})</h4>
                             <p><strong>Relationship Type:</strong> ${rel.r1.type || 'Not found'}</p>
                             <p><strong>GPT Description:</strong> ${rel.r1.description || 'No description found'}</p>
-                            <p><strong>GPT Confidence:</strong> <span class="confidence-badge ${rel.r1.confidence || 'low'}">${rel.r1.confidence || 'unknown'}</span></p>
                             <div class="confidence-selector">
                                 <span>Human Validation:</span>
                                 ${createConfidenceButtons(`r1_${index}`, rel.r1.confidenceHuman)}
@@ -1022,7 +1034,6 @@
                             <h4>🔄 R2 Relationship (${rel.nodeB.regulation || 'B'} → ${rel.nodeA.regulation || 'A'})</h4>
                             <p><strong>Relationship Type:</strong> ${rel.r2.type || 'Not found'}</p>
                             <p><strong>GPT Description:</strong> ${rel.r2.description || 'No description found'}</p>
-                            <p><strong>GPT Confidence:</strong> <span class="confidence-badge ${rel.r2.confidence || 'low'}">${rel.r2.confidence || 'unknown'}</span></p>
                             <div class="confidence-selector">
                                 <span>Human Validation:</span>
                                 ${createConfidenceButtons(`r2_${index}`, rel.r2.confidenceHuman)}
